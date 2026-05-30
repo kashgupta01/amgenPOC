@@ -2,9 +2,21 @@ import sqlite3
 from typing import Dict, List, Optional
 
 from config import DB_PATH
+from src.utils.error_handler import handle_db_errors
+from src.utils.exceptions import DatabaseError, ValidationError
+from src.utils.logger import get_logger
+
+logger = get_logger(__name__)
+
+ALLOWED_FILTER_KEYS = {"disease_context", "target_type", "current_status"}
 
 
+@handle_db_errors
 def query_targets(filters: Dict[str, Optional[str]]) -> List[sqlite3.Row]:
+    unknown = set(filters.keys()) - ALLOWED_FILTER_KEYS
+    if unknown:
+        raise ValidationError(f"Unknown filter keys: {unknown}")
+
     conditions = []
     params = []
 
@@ -23,17 +35,17 @@ def query_targets(filters: Dict[str, Optional[str]]) -> List[sqlite3.Row]:
         sql += " WHERE " + " AND ".join(conditions)
     sql += " ORDER BY updated_at DESC"
 
+    logger.debug("Executing query: %s | params: %s", sql, params)
+
     with sqlite3.connect(DB_PATH) as conn:
         conn.row_factory = sqlite3.Row
         cursor = conn.execute(sql, params)
-
-        #what does fetchall do? 
-        #fetchall() retrieves all the rows of a query result, returning them as a list of tuples. An empty list is returned if there are no more rows to fetch.
         results = cursor.fetchall()
-    #print("These are the results: ", print_all_results(results))
+
+    logger.info("query_targets returned %d row(s) for filters: %s", len(results), filters)
     return results
 
+
 def print_all_results(results):
-    #print(results.dtype(sqlite3.Row))
     for row in results:
         print(dict(row))
