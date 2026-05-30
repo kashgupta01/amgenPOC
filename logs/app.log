@@ -8,3 +8,13 @@
 2026-05-30 12:29:23 [INFO] src.control_plane.search - query_targets returned 2 row(s) for filters: {'disease_context': 'lung'}
 2026-05-30 12:29:23 [DEBUG] src.control_plane.search - Executing query: SELECT * FROM targets WHERE target_type = ? ORDER BY updated_at DESC | params: ['Kinase']
 2026-05-30 12:29:23 [INFO] src.control_plane.search - query_targets returned 1 row(s) for filters: {'target_type': 'Kinase'}
+2026-05-30 12:46:57 [DEBUG] src.control_plane.search - Executing query: SELECT * FROM targets ORDER BY updated_at DESC | params: []
+2026-05-30 12:46:57 [INFO] src.control_plane.search - query_targets returned 5 row(s) for filters: {}
+2026-05-30 12:46:57 [DEBUG] src.control_plane.search - Executing query: SELECT * FROM targets ORDER BY updated_at DESC | params: []
+2026-05-30 12:46:57 [INFO] src.control_plane.search - query_targets returned 5 row(s) for filters: {}
+2026-05-30 12:46:57 [DEBUG] src.control_plane.search - Executing query: SELECT * FROM targets WHERE current_status = ? ORDER BY updated_at DESC | params: ['Active']
+2026-05-30 12:46:57 [INFO] src.control_plane.search - query_targets returned 3 row(s) for filters: {'current_status': 'Active'}
+2026-05-30 12:46:57 [DEBUG] src.control_plane.search - Executing query: SELECT * FROM targets WHERE disease_context LIKE ? ORDER BY updated_at DESC | params: ['%lung%']
+2026-05-30 12:46:57 [INFO] src.control_plane.search - query_targets returned 2 row(s) for filters: {'disease_context': 'lung'}
+2026-05-30 12:46:57 [DEBUG] src.control_plane.search - Executing query: SELECT * FROM targets WHERE target_type = ? ORDER BY updated_at DESC | params: ['Kinase']
+2026-05-30 12:46:57 [INFO] src.control_plane.search - query_targets returned 1 row(s) for filters: {'target_type': 'Kinase'}
