@@ -1,19 +1,62 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+variables:
+  imageRepository: 'amgenpoc'
+  dockerfilePath: 'Dockerfile'
+  tag: '$(Build.BuildId)'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+stages:
+
+- stage: Test
+  displayName: Run Tests
+  jobs:
+  - job: PyTest
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.11'
+      displayName: 'Use Python 3.11'
+
+    - script: pip install -r requirements.txt pytest
+      displayName: 'Install dependencies'
+
+    - script: python -m pytest tests/ -v --tb=short
+      displayName: 'Run pytest'
+
+- stage: Build
+  displayName: Build Docker Image
+  dependsOn: Test
+  condition: succeeded()
+  jobs:
+  - job: DockerBuild
+    steps:
+    - task: Docker@2
+      displayName: 'Build image'
+      inputs:
+        command: build
+        dockerfile: $(dockerfilePath)
+        repository: $(imageRepository)
+        tags: |
+          $(tag)
+          latest
+
+- stage: Push
+  displayName: Push to Registry
+  dependsOn: Build
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  jobs:
+  - job: DockerPush
+    steps:
+    - task: Docker@2
+      displayName: 'Push image'
+      inputs:
+        command: push
+        containerRegistry: '$(dockerRegistryServiceConnection)'
+        repository: $(imageRepository)
+        tags: |
+          $(tag)
+          latest

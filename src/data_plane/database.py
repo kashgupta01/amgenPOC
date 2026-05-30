@@ -1,8 +1,9 @@
 import sqlite3
 from pathlib import Path
 
-DB_PATH = Path(__file__).resolve().parent.parent / "db" / "target_knowledge.db"
-SCHEMA_PATH = Path(__file__).resolve().parent.parent / "db" / "schema.sql"
+from config import DB_PATH
+
+SCHEMA_PATH = Path(__file__).resolve().parent.parent.parent / "db" / "schema.sql"
 
 
 def initialize_database() -> None:
