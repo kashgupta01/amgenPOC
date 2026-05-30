@@ -2,7 +2,7 @@ import sqlite3
 from pathlib import Path
 from typing import Dict, List, Optional
 
-DB_PATH = Path(__file__).resolve().parent.parent / "db" / "target_knowledge.db"
+DB_PATH = Path(__file__).resolve().parent.parent.parent / "db" / "target_knowledge.db"
 
 
 def query_targets(filters: Dict[str, Optional[str]]) -> List[sqlite3.Row]:
@@ -28,5 +28,5 @@ def query_targets(filters: Dict[str, Optional[str]]) -> List[sqlite3.Row]:
         conn.row_factory = sqlite3.Row
         cursor = conn.execute(sql, params)
         results = cursor.fetchall()
-
+    print("These are the results: ", results)
     return results
