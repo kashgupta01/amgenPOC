@@ -7,7 +7,7 @@ def test_query_targets_returns_list():
     assert isinstance(results, list)
     assert len(results) == 5
 
-test_query_targets_returns_list()
+#test_query_targets_returns_list()
 
 
 def test_query_targets_record_fields():

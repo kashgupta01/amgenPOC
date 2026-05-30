@@ -1,8 +1,7 @@
 import sqlite3
-from pathlib import Path
 from typing import Dict, List, Optional
 
-DB_PATH = Path(__file__).resolve().parent.parent.parent / "db" / "target_knowledge.db"
+from config import DB_PATH
 
 
 def query_targets(filters: Dict[str, Optional[str]]) -> List[sqlite3.Row]:
@@ -27,6 +26,14 @@ def query_targets(filters: Dict[str, Optional[str]]) -> List[sqlite3.Row]:
     with sqlite3.connect(DB_PATH) as conn:
         conn.row_factory = sqlite3.Row
         cursor = conn.execute(sql, params)
+
+        #what does fetchall do? 
+        #fetchall() retrieves all the rows of a query result, returning them as a list of tuples. An empty list is returned if there are no more rows to fetch.
         results = cursor.fetchall()
-    print("These are the results: ", results)
+    #print("These are the results: ", print_all_results(results))
     return results
+
+def print_all_results(results):
+    #print(results.dtype(sqlite3.Row))
+    for row in results:
+        print(dict(row))
