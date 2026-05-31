@@ -8,8 +8,10 @@ pool:
 variables:
   imageRepository: 'amgenpoc'
   dockerfilePath: 'Dockerfile'
+  #Add date timesamp in build tag
+  #tag: '$(Build.BuildId)'
   tag: '$(Build.BuildId)'
-
+  dockerRegistryServiceConnection: 'amgenPOC-acr-connection'
 stages:
 #Runs the tests using pytest. It installs the dependencies and then runs the tests in the tests/ directory.
 - stage: Test
@@ -43,6 +45,7 @@ stages:
       displayName: 'Build image'
       inputs:
         command: build
+        containerRegistry: '$(dockerRegistryServiceConnection)'
         dockerfile: $(dockerfilePath)
         repository: $(imageRepository)
         tags: |
