@@ -1,5 +1,6 @@
-trigger:
+trigger: 
 - main
+
 
 pool:
   vmImage: ubuntu-latest
@@ -10,7 +11,7 @@ variables:
   tag: '$(Build.BuildId)'
 
 stages:
-
+#Runs the tests using pytest. It installs the dependencies and then runs the tests in the tests/ directory.
 - stage: Test
   displayName: Run Tests
   jobs:
@@ -21,15 +22,19 @@ stages:
         versionSpec: '3.11'
       displayName: 'Use Python 3.11'
 
+    # Install dependencies and run tests using pytest
     - script: pip install -r requirements.txt pytest
       displayName: 'Install dependencies'
 
+      # Run pytest with verbose output and short traceback - what is short traceback? Short traceback is a pytest option that limits the amount of traceback information shown when a test fails. It provides a concise summary of the failure, making it easier to identify the issue without overwhelming the user with too much information. This can be particularly useful in CI/CD pipelines where you want to quickly understand test failures without sifting through extensive logs.
     - script: python -m pytest tests/ -v --tb=short
       displayName: 'Run pytest'
 
+# If the tests pass, this stage builds a Docker image using the specified Dockerfile and tags it with the build ID and 'latest'. It uses the Docker task to perform the build.
 - stage: Build
   displayName: Build Docker Image
   dependsOn: Test
+  # The condition 'succeeded()' ensures that this stage only runs if the previous stage (Test) was successful. If the tests fail, the pipeline will stop and the Build stage will not execute.
   condition: succeeded()
   jobs:
   - job: DockerBuild
@@ -43,7 +48,7 @@ stages:
         tags: |
           $(tag)
           latest
-
+# If the build is successful and the source branch is 'main', this stage pushes the Docker image to a container registry. It uses the Docker task to perform the push, and it checks that the build succeeded and that the source branch is 'main' before executing.
 - stage: Push
   displayName: Push to Registry
   dependsOn: Build
