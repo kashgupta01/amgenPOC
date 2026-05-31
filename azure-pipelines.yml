@@ -32,38 +32,22 @@ stages:
     - script: python -m pytest tests/ -v --tb=short
       displayName: 'Run pytest'
 
-# If the tests pass, this stage builds a Docker image using the specified Dockerfile and tags it with the build ID and 'latest'. It uses the Docker task to perform the build.
-- stage: Build
-  displayName: Build Docker Image
+# Builds and pushes the Docker image to ACR in a single job on the same agent.
+# Build and Push must run on the same agent — a separate Push stage would get a
+# fresh agent with no local image, causing "image does not exist" errors.
+- stage: BuildAndPush
+  displayName: Build and Push Docker Image
   dependsOn: Test
-  # The condition 'succeeded()' ensures that this stage only runs if the previous stage (Test) was successful. If the tests fail, the pipeline will stop and the Build stage will not execute.
-  condition: succeeded()
-  jobs:
-  - job: DockerBuild
-    steps:
-    - task: Docker@2
-      displayName: 'Build image'
-      inputs:
-        command: build
-        containerRegistry: '$(dockerRegistryServiceConnection)'
-        dockerfile: $(dockerfilePath)
-        repository: $(imageRepository)
-        tags: |
-          $(tag)
-          latest
-# If the build is successful and the source branch is 'main', this stage pushes the Docker image to a container registry. It uses the Docker task to perform the push, and it checks that the build succeeded and that the source branch is 'main' before executing.
-- stage: Push
-  displayName: Push to Registry
-  dependsOn: Build
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
   jobs:
-  - job: DockerPush
+  - job: DockerBuildPush
     steps:
     - task: Docker@2
-      displayName: 'Push image'
+      displayName: 'Build and push image'
       inputs:
-        command: push
+        command: buildAndPush
         containerRegistry: '$(dockerRegistryServiceConnection)'
+        dockerfile: $(dockerfilePath)
         repository: $(imageRepository)
         tags: |
           $(tag)
