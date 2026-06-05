@@ -1,0 +1,233 @@
+======================================================================
+PDF — PACKAGE COMPARISON
+Sample file : Bioinformatics analysis of the role of RNA modification regulators in polycystic ovary syndrome.pdf
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+LIBRARY: PyMuPDF (fitz)
+──────────────────────────────────────────────────────────────────────
+Heliyon 10 (2024) e36706
+Available online 23 August 2024
+2405-8440/©
+2024
+The
+Authors.
+Published
+by
+Elsevier
+Ltd.
+This
+is
+an
+open
+access
+article
+under
+the
+CC
+BY-NC
+license
+(http://creativecommons.org/licenses/by-nc/4.0/).
+Research article
+Bioinformatics analysis of the role of RNA modification regulators
+in polycystic ovary syndrome
+Kewei Quan a,b,*, Shuting Ning c, Zilin You a, Gaopi Deng d
+a Department of Obstetrics and Gynecology, Dongguan Hospital of Guangzhou University of Chinese Medicine, Dongguan, 523000, China
+b The First Clinical Medical College of Guangzhou University of Chinese Medicine, Guangzhou, 510405, China
+c Department of Gynaecology and Obstetrics, The First Affiliated Hospital of Guangzhou Medical University, Guangzhou, 510120, China
+d Department of Gynecology, The First Affiliated Hospital of Guangzhou University of Chinese Medicine, Guangzhou, 510080, Guangdong Province,
+China
+A R T I C L E I N F O
+Keywords:
+PCOS
+RNA modification
+Bioinformatic analyses
+Transcription factor
+Endocrine disorder
+A B S T R A C T
+Purpose: Polycystic ovary syndrome (PCOS) is the most common metabolic and endocrine dis-
+order affecting women of reproductive age. The pathogenesis of PCOS is influenced by factors
+such as race, genetics, environment, hyperandrogenemia, hyperinsulinemia, and obesity. How-
+ever, the molecular mechanisms linking RNA modification and PCOS remain underexplored. This
+study aims to investigate the potential genetic and molecular pathways connecting RNA modi-
+fication with PCOS through bioinformatics analyses.
+Methods: The GSE34526, GSE5850, and GSE98421 datasets were obtained from the National
+Center for Biotechnology Information Gene Expression Omnibus database. We identified inter-
+secting differentially expressed genes (DEGs) and RNA modification-related genes within the
+GSE34526 dataset and visualized the overlaps using a Venn diagram. Subsequent analyses
+included Gene Ontology (GO), pathway enrichment (Kyoto Encyclopedia of Genes and Genome ...[truncated]
+
+──────────────────────────────────────────────────────────────────────
+LIBRARY: pdfplumber
+──────────────────────────────────────────────────────────────────────
+Heliyon10(2024)e36706
+ContentslistsavailableatScienceDirect
+Heliyon
+journalhomepage:www.cell.com/heliyon
+Research article
+Bioinformatics analysis of the role of RNA modification regulators
+in polycystic ovary syndrome
+Kewei Quana,b,*, Shuting Ningc, Zilin Youa, Gaopi Dengd
+aDepartmentofObstetricsandGynecology,DongguanHospitalofGuangzhouUniversityofChineseMedicine,Dongguan,523000,China
+bTheFirstClinicalMedicalCollegeofGuangzhouUniversityofChineseMedicine,Guangzhou,510405,China
+cDepartmentofGynaecologyandObstetrics,TheFirstAffiliatedHospitalofGuangzhouMedicalUniversity,Guangzhou,510120,China
+dDepartmentofGynecology,TheFirstAffiliatedHospitalofGuangzhouUniversityofChineseMedicine,Guangzhou,510080,GuangdongProvince,
+China
+A R T I C L E I N F O A B S T R A C T
+Keywords: Purpose:Polycysticovarysyndrome(PCOS)isthemostcommonmetabolicandendocrinedis-
+PCOS orderaffectingwomenofreproductiveage.ThepathogenesisofPCOSisinfluencedbyfactors
+RNAmodification suchasrace,genetics,environment,hyperandrogenemia,hyperinsulinemia,andobesity.How-
+Bioinformaticanalyses
+ever,themolecularmechanismslinkingRNAmodificationandPCOSremainunderexplored.This
+Transcriptionfactor
+studyaimstoinvestigatethepotentialgeneticandmolecularpathwaysconnectingRNAmodi-
+Endocrinedisorder
+ficationwithPCOSthroughbioinformaticsanalyses.
+Methods: The GSE34526, GSE5850, and GSE98421 datasets were obtained from the National
+CenterforBiotechnologyInformationGeneExpressionOmnibusdatabase.Weidentifiedinter-
+secting differentially expressed genes (DEGs) and RNA modification-related genes within the
+GSE34526 dataset and visualized the overlaps using a Venn diagram. Subsequent analyses
+includedGeneOntology(GO),pathwayenrichment(KyotoEncyclopediaofGenesandGenomes),
+genesetenrichmentanalysis(GSEA),genesetvariationanalysis(GSVA),andimmuneinfiltration
+analysis.Additionally,weconstructedaprotein-proteininteractionnetworkaswellasmRNA-
+miRNA,mRNA-RNAbindingprotein,andmRNA-transcriptionfactor(TF)regulatorynetworks.
+Theexpressionandrec ...[truncated]
+
+──────────────────────────────────────────────────────────────────────
+LIBRARY: pdfminer.six
+──────────────────────────────────────────────────────────────────────
+Contents lists available at ScienceDirect
+
+Heliyon
+
+journal homepage: www.cell.com/heliyon
+
+Research article
+
+Bioinformatics analysis of the role of RNA modification regulators
+in polycystic ovary syndrome
+
+Kewei Quan a, b, *, Shuting Ning c, Zilin You a, Gaopi Deng d
+a Department of Obstetrics and Gynecology, Dongguan Hospital of Guangzhou University of Chinese Medicine, Dongguan, 523000, China
+b The First Clinical Medical College of Guangzhou University of Chinese Medicine, Guangzhou, 510405, China
+c Department of Gynaecology and Obstetrics, The First Affiliated Hospital of Guangzhou Medical University, Guangzhou, 510120, China
+d Department of Gynecology, The First Affiliated Hospital of Guangzhou University of Chinese Medicine, Guangzhou, 510080, Guangdong Province,
+China
+
+A R T I C L E I N F O
+
+A B S T R A C T
+
+Keywords:
+PCOS
+RNA modification
+Bioinformatic analyses
+Transcription factor
+Endocrine disorder
+
+Purpose: Polycystic ovary syndrome (PCOS) is the most common metabolic and endocrine dis-
+order affecting women of reproductive age. The pathogenesis of PCOS is influenced by factors
+such as race, genetics, environment, hyperandrogenemia, hyperinsulinemia, and obesity. How-
+ever, the molecular mechanisms linking RNA modification and PCOS remain underexplored. This
+study aims to investigate the potential genetic and molecular pathways connecting RNA modi-
+fication with PCOS through bioinformatics analyses.
+Methods: The GSE34526, GSE5850, and GSE98421 datasets were obtained from the National
+Center for Biotechnology Information Gene Expression Omnibus database. We identified inter-
+secting differentially expressed genes (DEGs) and RNA modification-related genes within the
+GSE34526 dataset and visualized the overlaps using a Venn diagram. Subsequent analyses
+included Gene Ontology (GO), pathway enrichment (Kyoto Encyclopedia of Genes and Genomes),
+gene set enrichment analysis (GSEA), gene set variation analysis (GSVA), and immune infiltration
+analysis. Additionall ...[truncated]
+
+──────────────────────────────────────────────────────────────────────
+LIBRARY: pypdf
+──────────────────────────────────────────────────────────────────────
+Heliyon 10 (2024) e36706
+Available online 23 August 2024
+2405-8440/© 2024 The Authors. Published by Elsevier Ltd. This is an open access article under the CC BY-NC license
+(http://creativecommons.org/licenses/by-nc/4.0/).
+Research article
+Bioinformatics analysis of the role of RNA modification regulators
+in polycystic ovary syndrome
+Kewei Quan
+a , b , *
+, Shuting Ning
+c
+, Zilin You
+a
+, Gaopi Deng
+d
+a
+Department of Obstetrics and Gynecology, Dongguan Hospital of Guangzhou University of Chinese Medicine, Dongguan, 523000, China
+b
+The First Clinical Medical College of Guangzhou University of Chinese Medicine, Guangzhou, 510405, China
+c
+Department of Gynaecology and Obstetrics, The First Affiliated Hospital of Guangzhou Medical University, Guangzhou, 510120, China
+d
+Department of Gynecology, The First Affiliated Hospital of Guangzhou University of Chinese Medicine, Guangzhou, 510080, Guangdong Province,
+China
+ARTICLE INFO
+Keywords:
+PCOS
+RNA modification
+Bioinformatic analyses
+Transcription factor
+Endocrine disorder
+ABSTRACT
+Purpose: Polycystic ovary syndrome (PCOS) is the most common metabolic and endocrine dis-
+order affecting women of reproductive age. The pathogenesis of PCOS is influenced by factors
+such as race, genetics, environment, hyperandrogenemia, hyperinsulinemia, and obesity. How-
+ever, the molecular mechanisms linking RNA modification and PCOS remain underexplored. This
+study aims to investigate the potential genetic and molecular pathways connecting RNA modi-
+fication with PCOS through bioinformatics analyses.
+Methods: The GSE34526, GSE5850, and GSE98421 datasets were obtained from the National
+Center for Biotechnology Information Gene Expression Omnibus database. We identified inter-
+secting differentially expressed genes (DEGs) and RNA modification-related genes within the
+GSE34526 dataset and visualized the overlaps using a Venn diagram. Subsequent analyses
+included Gene Ontology (GO), pathway enrichment (Kyoto Encyclopedia of Genes and Genomes),
+gene  ...[truncated]
+
+──────────────────────────────────────────────────────────────────────
+LIBRARY: Apache Tika
+──────────────────────────────────────────────────────────────────────
+Heliyon 10 (2024) e36706
+
+Available online 23 August 2024
+2405-8440/© 2024 The Authors. Published by Elsevier Ltd. This is an open access article under the CC BY-NC license
+(http://creativecommons.org/licenses/by-nc/4.0/).
+
+Research article
+
+Bioinformatics analysis of the role of RNA modification regulators
+in polycystic ovary syndrome
+
+Kewei Quan a,b,*, Shuting Ning c, Zilin You a, Gaopi Deng d
+
+a Department of Obstetrics and Gynecology, Dongguan Hospital of Guangzhou University of Chinese Medicine, Dongguan, 523000, China
+b The First Clinical Medical College of Guangzhou University of Chinese Medicine, Guangzhou, 510405, China
+c Department of Gynaecology and Obstetrics, The First Affiliated Hospital of Guangzhou Medical University, Guangzhou, 510120, China
+d Department of Gynecology, The First Affiliated Hospital of Guangzhou University of Chinese Medicine, Guangzhou, 510080, Guangdong Province,
+China
+
+A R T I C L E I N F O
+
+Keywords:
+PCOS
+RNA modification
+Bioinformatic analyses
+Transcription factor
+Endocrine disorder
+
+A B S T R A C T
+
+Purpose: Polycystic ovary syndrome (PCOS) is the most common metabolic and endocrine dis-
+order affecting women of reproductive age. The pathogenesis of PCOS is influenced by factors
+such as race, genetics, environment, hyperandrogenemia, hyperinsulinemia, and obesity. How-
+ever, the molecular mechanisms linking RNA modification and PCOS remain underexplored. This
+study aims to investigate the potential genetic and molecular pathways connecting RNA modi-
+fication with PCOS through bioinformatics analyses.
+Methods: The GSE34526, GSE5850, and GSE98421 datasets were obtained from the National
+Center for Biotechnology Information Gene Expression Omnibus database. We identified inter-
+secting differentially expressed genes (DEGs) and RNA modification-related genes within the
+GSE34526 dataset and visualized the overlaps using a Venn diagram. Subsequent analyses
+included Gene Ontology (GO), pathway enrichment (Kyoto Encyclopedia of Genes a ...[truncated]

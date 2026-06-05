@@ -1,0 +1,183 @@
+======================================================================
+PPTX — PACKAGE COMPARISON
+Sample file : DS340 – Discussion1.pptx
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+LIBRARY: python-pptx
+──────────────────────────────────────────────────────────────────────
+[Slide 1]
+DS340 – Discussion Session
+Course Instructor: Kevin Gold
+
+[Slide 2]
+I’m Kashish!
+Excited to be your TA!
+
+[Slide 3]
+Section Logistics
+Discussion: every Thursday at 12:30-1:20PM 
+Start off with an overview of lecture or news concerning AI or lecture topics that week (which one?) 
+Transition into worksheets completed during discussion sessions
+This section is required: while the worksheets are not graded, there is a participation grade. 
+However, if you can’t make it to the section, please email me and the professor ahead of time
+My office hours will be posted by the end of this week on Piazza 
+Please come to me for help with anything: no judgement here! Everyone has different backgrounds and learning curves
+
+[Slide 4]
+Strengths and Weaknesses of AI
+1. What do we know about the current state of AI and machine learning?  What major successes can you remember, from either news stories or the first lecture?
+2. Is there anything AI/ML seems to be bad at?
+3. Can we speculate as to why AI/ML tends to be good at some things, but not others?
+
+[Slide 5]
+The Elephant in the Room, ChatGPT (or similar)
+1. What have you used ChatGPT, GPT-4, or another large language model for?
+2. What have you heard about how ChatGPT works?
+3. What are your opinions on how it ought to be used by students, versus misused?
+4. Is this a case of AI researchers unleashing a technology on the world without adequately thinking of the consequences, or does it appear to be a net good?
+
+[Slide 6]
+Fears and Ethics
+1. What do you worry *might* happen in AI and machine learning? 
+2. What can AI/ML people do to help ensure that none of that comes about?
+
+[Slide 7]
+Making It Personal
+What field do you think of yourself as belonging to?  (programming, pre-med, math, ...)
+What do you, personally, hope to get out of this class?
+If you got *really* good at AI/ML eventually, what would you do then?
+
+[Slide 8]
+Project Brainstorming
+Once discussion of the above topics is complete, spend some time brainstorming ...[truncated]
+
+──────────────────────────────────────────────────────────────────────
+LIBRARY: Apache Tika
+──────────────────────────────────────────────────────────────────────
+DS340 – Discussion Session 
+Course Instructor: Kevin Gold
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+I’m Kashish! 
+Excited to be your TA! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Section Logistics 
+Discussion: every Thursday at 12:30-1:20PM 
+Start off with an overview of lecture or news concerning AI or lecture topics that week (which one?) 
+Transition into worksheets completed during discussion sessions
+This section is required: while the worksheets are not graded, there is a participation grade. 
+However, if you can’t make it to the section, please email me and the professor ahead of time
+My office hours will be posted by the end of this week on Piazza 
+Please come to me for help with anything: no judgement here! Everyone has different backgrounds and learning curves 
+
+
+
+
+
+
+
+
+
+
+
+3
+
+Strengths and Weaknesses of AI 
+1. What do we know about the current state of AI and machine learning?  What major successes can you remember, from either news stories or the first lecture?
+2. Is there anything AI/ML seems to be bad at?
+3. Can we speculate as to why AI/ML tends to be good at some things, but not others?
+
+
+
+
+
+
+
+
+
+
+
+5 minutes in the groups and then share out loud, freeform 
+4
+
+The Elephant in the Room, ChatGPT (or similar)
+1. What have you used ChatGPT, GPT-4, or another large language model for?
+2. What have you heard about how ChatGPT works?
+3. What are your opinions on how it ought to be used by students, versus misused?
+4. Is this a case of AI researchers unleashing a technology on the world without adequately thinking of the consequences, or does it appear to be a net good?
+
+
+
+
+
+
+
+
+
+
+
+
+Fears and Ethics 
+1. What do you worry *might* happen in AI and machine learning? 
+2. What can AI/ML people do to help ensure that none of that comes about?
+
+
+
+
+
+
+
+
+
+
+
+
+
+Making It Personal 
+What field do you think of yourself as belonging to?  (programming, pre-med, math, ...)
+What do you, personally, hope to get out of this class?
+If you got *really* good at AI/ML eventually, what would you do then?
+
+
+
+
+
+
+
+
+
+
+
+
+
+Project Brainstorming  ...[truncated]

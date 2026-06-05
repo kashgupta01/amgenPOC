@@ -1,0 +1,53 @@
+======================================================================
+DOCX — PACKAGE COMPARISON
+Sample file : Flaws_In_Clinical_Methodology_Kashish.docx
+======================================================================
+
+──────────────────────────────────────────────────────────────────────
+LIBRARY: python-docx
+──────────────────────────────────────────────────────────────────────
+Kashish 
+PY2713 – Bioethics: Professor Elizabeth Victor
+March 3, 2023 
+Paper 2 
+Flaws in Clinical Trial Methodology 
+In every basic science class, the syllabus always contains at least one experiment to be conducted throughout the course of the year to determine a correlation between two variables. In higher level science courses, there is eventually analysis beyond correlation graphs in order to determine if the independent variable affected the dependent variable significantly. This type of experimental model is revered, and treated as the golden standard with which to conduct research. However, on a much larger scale, the same type of bias is dangerous in clinical trials. There is an inherent bias towards certain types of methodologies in research, and it starts with misunderstanding the core identification of Evidence Based Medicine (EBM).  
+Evidence based medicine is the best use of current best evidence and resources in order to make conscientious decisions about individual patients. It aims to “[integrate] individual clinical expertise with the best available clinical evidence from systematic research”.1 Simply put, there needs to be a balance between the experience of individual clinicians and research studies conducted to offer the best service to the patients the healthcare system is serving. While EBM sounds perfect in theory, it is difficult to keep up with in reality. When trying to fulfill the first condition of EBM (individual clinical experience), one must be careful not to let any emotion, distraction or bias cloud their judgement when examining their patients as it may harm the patient’s physical, social and mental health in various ways. When trying to fulfill the second condition of EBM (best clinical evidence), one runs into the obvious issue of the lack of time to read current articles and stay up to date. As the second condition is much more time consuming to fulfill than the first, a preference for certain methods of conducting clinical trial ...[truncated]
+
+──────────────────────────────────────────────────────────────────────
+LIBRARY: mammoth
+──────────────────────────────────────────────────────────────────────
+Kashish 
+
+PY2713 – Bioethics: Professor Elizabeth Victor
+
+March 3, 2023 
+
+Paper 2 
+
+Flaws in Clinical Trial Methodology 
+
+In every basic science class, the syllabus always contains at least one experiment to be conducted throughout the course of the year to determine a correlation between two variables. In higher level science courses, there is eventually analysis beyond correlation graphs in order to determine if the independent variable affected the dependent variable significantly. This type of experimental model is revered, and treated as the golden standard with which to conduct research. However, on a much larger scale, the same type of bias is dangerous in clinical trials. There is an inherent bias towards certain types of methodologies in research, and it starts with misunderstanding the core identification of Evidence Based Medicine (EBM).  
+
+Evidence based medicine is the best use of current best evidence and resources in order to make conscientious decisions about individual patients. It aims to “[integrate] individual clinical expertise with the best available clinical evidence from systematic research”.1 Simply put, there needs to be a balance between the experience of individual clinicians and research studies conducted to offer the best service to the patients the healthcare system is serving. While EBM sounds perfect in theory, it is difficult to keep up with in reality. When trying to fulfill the first condition of EBM (individual clinical experience), one must be careful not to let any emotion, distraction or bias cloud their judgement when examining their patients as it may harm the patient’s physical, social and mental health in various ways. When trying to fulfill the second condition of EBM (best clinical evidence), one runs into the obvious issue of the lack of time to read current articles and stay up to date. As the second condition is much more time consuming to fulfill than the first, a preference for certain methods of conducting clinical ...[truncated]
+
+──────────────────────────────────────────────────────────────────────
+LIBRARY: docx2txt
+──────────────────────────────────────────────────────────────────────
+2
+
+
+
+Kashish 
+
+PY2713 – Bioethics: Professor Elizabeth Victor
+
+March 3, 2023 
+
+Paper 2 
+
+Flaws in Clinical Trial Methodology 
+
+In every basic science class, the syllabus always contains at least one experiment to be conducted throughout the course of the year to determine a correlation between two variables. In higher level science courses, there is eventually analysis beyond correlation graphs in order to determine if the independent variable affected the dependent variable significantly. This type of experimental model is revered, and treated as the golden standard with which to conduct research. However, on a much larger scale, the same type of bias is dangerous in clinical trials. There is an inherent bias towards certain types of methodologies in research, and it starts with misunderstanding the core identification of Evidence Based Medicine (EBM).  
+
+Evidence based medicine is the best use of current best evidence and resources in order to make conscientious decisions about individual patients. It aims to “[integrate] individual clinical expertise with the best available clinical evidence from systematic research”.1 Simply put, there needs to be a balance between the experience of individual clinicians and research studies conducted to offer the best service to the patients the healthcare system is serving. While EBM sounds perfect in theory, it is difficult to keep up with in reality. When trying to fulfill the first condition of EBM (individual clinical experience), one must be careful not to let any emotion, distraction or bias cloud their judgement when examining their patients as it may harm the patient’s physical, social and mental health in various ways. When trying to fulfill the second condition of EBM (best clinical evidence), one runs into the obvious issue of the lack of time to read current articles and stay up to date. As the second condition is much more time consuming to fulfill than the first, a preference for certain methods of conducting cli ...[truncated]

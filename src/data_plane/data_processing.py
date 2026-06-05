@@ -45,10 +45,17 @@ def _extract_pdf(path: pathlib.Path) -> list[tuple[str, str]]:
             footnote_threshold = page_h * 0.88  # bottom 12% = footnote zone
 
             kept = []
+            #what is page.get_text("blocks")? This method retrieves the text from the PDF page in the form of blocks, where each block is a tuple containing the coordinates of the block (x0, y0, x1, y1), the text content of the block, the block number, and the block type. The block type indicates whether the block is text or an image, allowing us to filter out non-text elements during extraction.
             for block in page.get_text("blocks"):
                 # block: (x0, y0, x1, y1, text, block_no, block_type)
                 # block_type 1 = image — skip entirely
-                if block[6] == 1:
+                #why block_type 1 is an image? In the fitz library, when you call page.get_text("blocks"), it returns a list of blocks where each block is a tuple containing information about the block's position, text content, block number, and block type. The block type is an integer that indicates the type of content in the block. A block type of 1 specifically indicates that the block contains an image rather than text. This allows us to easily filter out image blocks during the extraction process, ensuring that we only keep textual content for our knowledge graph construction.
+                #what are the block types? The block types in the fitz library are typically defined as follows:
+                #0: Text block - contains text content that can be extracted.
+                #1: Image block - contains an image, which is not text and should be skipped for our purposes.
+                #2: Vector block - contains vector graphics, which may include lines, shapes, or other non-text elements that we also want to skip. 
+                
+                if block[6] == 1 or block[6] == 2:
                     continue
                 # skip blocks that start in the footnote zone
                 y0 = block[1]
