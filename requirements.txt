@@ -1,3 +1,6 @@
-flask
+shiny
+pandas
 pydantic
 sqlite-utils
+sentence-transformers
+numpy

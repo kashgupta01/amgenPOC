@@ -65,6 +65,8 @@ def _extract_pdf(path: pathlib.Path) -> list[tuple[str, str]]:
                 if not text:
                     continue
                 # skip figure/table captions and reference noise
+                #what is this line doing? This line uses a regular expression to check if the first line of the extracted text block matches common patterns that indicate noise, such as figure or table captions, supplementary material references, copyright symbols, DOIs, URLs, or reference list entries. If the first line matches any of these patterns, the block is considered noise and is skipped from being included in the final results. This helps to reduce irrelevant information in the extracted data, making it more focused and useful for building the knowledge graph.
+                #where is it iterating through each line of the text block? The line is splitting the extracted text block into individual lines using the splitlines() method, and then it checks only the first line (first_line) against the regular expression pattern to determine if it should be considered noise. If the first line matches the noise pattern, the entire block is skipped. This approach assumes that if the first line of a block is noise, the rest of the block is likely to be noise as well, which helps to efficiently filter out irrelevant content from the PDF.
                 first_line = text.splitlines()[0]
                 if _NOISE.match(first_line):
                     continue

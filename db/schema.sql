@@ -1,4 +1,14 @@
 -- SQLite schema for Target Knowledge & Decision Tracking
+-- and Document Embedding Index
+
+CREATE TABLE IF NOT EXISTS documents (
+    id          INTEGER PRIMARY KEY,
+    filename    TEXT    NOT NULL UNIQUE,
+    source_type TEXT    NOT NULL,
+    preview     TEXT,
+    embedding   BLOB    NOT NULL,
+    indexed_at  TEXT    DEFAULT CURRENT_TIMESTAMP
+);
 
 CREATE TABLE IF NOT EXISTS targets (
     id INTEGER PRIMARY KEY,

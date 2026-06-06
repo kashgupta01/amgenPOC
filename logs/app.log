@@ -28,3 +28,18 @@
 2026-05-30 17:06:22 [INFO] src.control_plane.search - query_targets returned 3 row(s) for filters: {'disease_context': 'lung'}
 2026-05-30 17:06:22 [DEBUG] src.control_plane.search - Executing query: SELECT * FROM targets WHERE target_type = ? ORDER BY updated_at DESC | params: ['Kinase']
 2026-05-30 17:06:22 [INFO] src.control_plane.search - query_targets returned 1 row(s) for filters: {'target_type': 'Kinase'}
+2026-06-06 15:08:53 [INFO] app - Index built with 12 documents
+2026-06-06 15:09:06 [INFO] app - Search query='BRAC1' k=5
+2026-06-06 15:09:50 [INFO] app - Search query='oncogenesis' k=5
+2026-06-06 15:09:59 [INFO] app - Search query='cancer' k=5
+2026-06-06 15:10:15 [INFO] app - Search query='breast cancer' k=5
+2026-06-06 15:10:55 [INFO] app - Search query='breast cancer' k=1
+2026-06-06 15:11:14 [INFO] app - Search query='genes in breast cancer' k=5
+2026-06-06 15:11:25 [INFO] app - Search query='genes ' k=5
+2026-06-06 15:23:03 [INFO] app - Index built with 12 documents
+2026-06-06 15:23:18 [INFO] app - Search query='cancer' k=5
+2026-06-06 15:23:45 [INFO] app - Search query='breast cancer' k=5
+2026-06-06 15:24:10 [INFO] app - Search query='gene' k=5
+2026-06-06 15:36:49 [INFO] app - Index built with 12 documents
+2026-06-06 15:40:35 [INFO] app - Index built with 12 documents
+2026-06-06 15:40:50 [INFO] app - Search query='give me all the documents with breast cancer gene' k=5
