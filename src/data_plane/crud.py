@@ -1,17 +1,13 @@
 import sqlite3
 from typing import Optional
 
+from src.data_plane import queries
 from src.data_plane.models import DecisionEntry, EvidenceItem, TargetRecord
 
 
 def insert_target(conn: sqlite3.Connection, target: TargetRecord) -> int:
     cursor = conn.execute(
-        """
-        INSERT INTO targets
-            (name, target_type, disease_context, modality, therapeutic_rationale,
-             scientific_concerns, current_status, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """,
+        queries.INSERT_TARGET,
         (
             target.name,
             target.target_type,
@@ -37,30 +33,24 @@ def update_target(conn: sqlite3.Connection, target_id: int, fields: dict) -> Non
         return
     set_clause = ", ".join(f"{k} = ?" for k in filtered)
     conn.execute(
-        f"UPDATE targets SET {set_clause} WHERE id = ?",
+        queries.UPDATE_TARGET_TEMPLATE.format(set_clause=set_clause),
         (*filtered.values(), target_id),
     )
 
 
 def delete_target(conn: sqlite3.Connection, target_id: int) -> None:
-    conn.execute("DELETE FROM evidence_items WHERE target_id = ?", (target_id,))
-    conn.execute("DELETE FROM decision_history WHERE target_id = ?", (target_id,))
-    conn.execute("DELETE FROM targets WHERE id = ?", (target_id,))
+    conn.execute(queries.DELETE_EVIDENCE_BY_TARGET, (target_id,))
+    conn.execute(queries.DELETE_DECISIONS_BY_TARGET, (target_id,))
+    conn.execute(queries.DELETE_TARGET_BY_ID, (target_id,))
 
 
 def get_target_by_id(conn: sqlite3.Connection, target_id: int) -> Optional[sqlite3.Row]:
-    return conn.execute(
-        "SELECT * FROM targets WHERE id = ?", (target_id,)
-    ).fetchone()
+    return conn.execute(queries.SELECT_TARGET_BY_ID, (target_id,)).fetchone()
 
 
 def insert_evidence_item(conn: sqlite3.Connection, target_id: int, item: EvidenceItem) -> int:
     cursor = conn.execute(
-        """
-        INSERT INTO evidence_items
-            (target_id, source, evidence_type, evidence_strength, summary, details, created_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-        """,
+        queries.INSERT_EVIDENCE_ITEM,
         (
             target_id,
             item.source,
@@ -75,20 +65,12 @@ def insert_evidence_item(conn: sqlite3.Connection, target_id: int, item: Evidenc
 
 
 def get_evidence_by_target(conn: sqlite3.Connection, target_id: int) -> list:
-    return conn.execute(
-        "SELECT * FROM evidence_items WHERE target_id = ? ORDER BY created_at DESC",
-        (target_id,),
-    ).fetchall()
+    return conn.execute(queries.SELECT_EVIDENCE_BY_TARGET, (target_id,)).fetchall()
 
 
 def insert_decision(conn: sqlite3.Connection, target_id: int, entry: DecisionEntry) -> int:
     cursor = conn.execute(
-        """
-        INSERT INTO decision_history
-            (target_id, decision, rationale, supporting_evidence,
-             decision_date, changed_by, notes)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-        """,
+        queries.INSERT_DECISION,
         (
             target_id,
             entry.decision,
@@ -103,7 +85,4 @@ def insert_decision(conn: sqlite3.Connection, target_id: int, entry: DecisionEnt
 
 
 def get_decisions_by_target(conn: sqlite3.Connection, target_id: int) -> list:
-    return conn.execute(
-        "SELECT * FROM decision_history WHERE target_id = ? ORDER BY decision_date DESC",
-        (target_id,),
-    ).fetchall()
+    return conn.execute(queries.SELECT_DECISIONS_BY_TARGET, (target_id,)).fetchall()

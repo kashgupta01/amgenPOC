@@ -43,3 +43,124 @@
 2026-06-06 15:36:49 [INFO] app - Index built with 12 documents
 2026-06-06 15:40:35 [INFO] app - Index built with 12 documents
 2026-06-06 15:40:50 [INFO] app - Search query='give me all the documents with breast cancer gene' k=5
+2026-06-07 09:18:20 [INFO] app - Index refreshed; 12 documents indexed
+2026-06-07 09:18:32 [INFO] app - Search query='cancer' k=5
+2026-06-07 09:19:32 [INFO] app - Index refreshed; 12 documents indexed
+2026-06-07 10:19:30 [INFO] app - Index refreshed; 12 documents indexed
+2026-06-07 10:19:43 [INFO] app - Search query='cancer' k=5
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\BRCA1.pdf
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR.pdf
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR_BRCA1_Notes.docx
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EXCEL_Oncology_Treatment_Status.xlsx
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\IDH.pdf
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT1_EGFR_BRCA1.pptx
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT2_PTEN_IDH1.pptx
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT3_VHL.pptx
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN.pdf
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN_IDH1_Notes.docx
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL.pdf
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL_Notes.docx
+2026-06-07 11:23:28 [INFO] src.data_plane.embeddings - Embedding: BRCA1.pdf
+2026-06-07 11:23:51 [INFO] src.data_plane.embeddings - Embedding: EGFR.pdf
+2026-06-07 11:24:22 [INFO] src.data_plane.embeddings - Embedding: EGFR_BRCA1_Notes.docx
+2026-06-07 11:24:24 [INFO] src.data_plane.embeddings - Embedding: EXCEL_Oncology_Treatment_Status.xlsx
+2026-06-07 11:24:30 [INFO] src.data_plane.embeddings - Embedding: IDH.pdf
+2026-06-07 11:25:21 [INFO] src.data_plane.embeddings - Embedding: PPT1_EGFR_BRCA1.pptx
+2026-06-07 11:25:23 [INFO] src.data_plane.embeddings - Embedding: PPT2_PTEN_IDH1.pptx
+2026-06-07 11:25:24 [INFO] src.data_plane.embeddings - Embedding: PPT3_VHL.pptx
+2026-06-07 11:25:25 [INFO] src.data_plane.embeddings - Embedding: PTEN.pdf
+2026-06-07 11:25:59 [INFO] src.data_plane.embeddings - Embedding: PTEN_IDH1_Notes.docx
+2026-06-07 11:26:01 [INFO] src.data_plane.embeddings - Embedding: VHL.pdf
+2026-06-07 11:26:29 [INFO] src.data_plane.embeddings - Embedding: VHL_Notes.docx
+2026-06-07 11:26:31 [INFO] app - Index refreshed; 12 documents indexed
+2026-06-07 11:27:15 [INFO] app - Search query='cancer' k=5
+2026-06-07 11:27:24 [INFO] app - Search query='gene' k=5
+2026-06-07 11:28:03 [INFO] app - Search query='cancer in women' k=5
+2026-06-07 11:29:02 [INFO] app - Search query='cancer in men' k=5
+2026-06-07 11:29:42 [INFO] app - Search query='brain' k=5
+2026-06-07 11:30:57 [INFO] app - Search query='race' k=5
+2026-06-07 11:41:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\BRCA1.pdf
+2026-06-07 11:41:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR.pdf
+2026-06-07 11:41:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR_BRCA1_Notes.docx
+2026-06-07 11:41:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EXCEL_Oncology_Treatment_Status.xlsx
+2026-06-07 11:41:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\IDH.pdf
+2026-06-07 11:41:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT1_EGFR_BRCA1.pptx
+2026-06-07 11:41:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT2_PTEN_IDH1.pptx
+2026-06-07 11:41:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT3_VHL.pptx
+2026-06-07 11:41:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN.pdf
+2026-06-07 11:41:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN_IDH1_Notes.docx
+2026-06-07 11:41:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL.pdf
+2026-06-07 11:41:28 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL_Notes.docx
+2026-06-07 11:41:28 [INFO] app - Index refreshed; 12 documents indexed
+2026-06-07 11:41:35 [INFO] app - Search query='gene' k=10
+2026-06-07 11:41:51 [INFO] app - Search query='gene' k=20
+2026-06-07 11:44:19 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\BRCA1.pdf
+2026-06-07 11:44:19 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR.pdf
+2026-06-07 11:44:19 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR_BRCA1_Notes.docx
+2026-06-07 11:44:19 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EXCEL_Oncology_Treatment_Status.xlsx
+2026-06-07 11:44:19 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\IDH.pdf
+2026-06-07 11:44:19 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT1_EGFR_BRCA1.pptx
+2026-06-07 11:44:19 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT2_PTEN_IDH1.pptx
+2026-06-07 11:44:19 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT3_VHL.pptx
+2026-06-07 11:44:19 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN.pdf
+2026-06-07 11:44:19 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN_IDH1_Notes.docx
+2026-06-07 11:44:19 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL.pdf
+2026-06-07 11:44:19 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL_Notes.docx
+2026-06-07 11:44:19 [INFO] app - Index refreshed; 12 documents indexed
+2026-06-07 11:44:29 [INFO] app - Search query='gene' k=5
+2026-06-07 11:44:36 [INFO] app - Search query='gene' k=20
+2026-06-07 11:50:46 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\BRCA1.pdf
+2026-06-07 11:50:46 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR.pdf
+2026-06-07 11:50:46 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR_BRCA1_Notes.docx
+2026-06-07 11:50:46 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EXCEL_Oncology_Treatment_Status.xlsx
+2026-06-07 11:50:46 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\IDH.pdf
+2026-06-07 11:50:46 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT1_EGFR_BRCA1.pptx
+2026-06-07 11:50:46 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT2_PTEN_IDH1.pptx
+2026-06-07 11:50:46 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT3_VHL.pptx
+2026-06-07 11:50:46 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN.pdf
+2026-06-07 11:50:46 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN_IDH1_Notes.docx
+2026-06-07 11:50:46 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL.pdf
+2026-06-07 11:50:46 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL_Notes.docx
+2026-06-07 11:50:46 [INFO] app - Index refreshed; 12 documents indexed
+2026-06-07 11:50:53 [INFO] app - Search query='gene' k=5
+2026-06-07 11:51:22 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\BRCA1.pdf
+2026-06-07 11:51:22 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR.pdf
+2026-06-07 11:51:22 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR_BRCA1_Notes.docx
+2026-06-07 11:51:22 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EXCEL_Oncology_Treatment_Status.xlsx
+2026-06-07 11:51:22 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\IDH.pdf
+2026-06-07 11:51:22 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT1_EGFR_BRCA1.pptx
+2026-06-07 11:51:22 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT2_PTEN_IDH1.pptx
+2026-06-07 11:51:22 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT3_VHL.pptx
+2026-06-07 11:51:22 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN.pdf
+2026-06-07 11:51:22 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN_IDH1_Notes.docx
+2026-06-07 11:51:22 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL.pdf
+2026-06-07 11:51:22 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL_Notes.docx
+2026-06-07 11:51:22 [INFO] app - Index refreshed; 12 documents indexed
+2026-06-07 11:51:40 [INFO] app - Search query='gene' k=20
+2026-06-07 11:56:04 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\BRCA1.pdf
+2026-06-07 11:56:04 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR.pdf
+2026-06-07 11:56:04 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR_BRCA1_Notes.docx
+2026-06-07 11:56:04 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EXCEL_Oncology_Treatment_Status.xlsx
+2026-06-07 11:56:04 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\IDH.pdf
+2026-06-07 11:56:04 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT1_EGFR_BRCA1.pptx
+2026-06-07 11:56:04 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT2_PTEN_IDH1.pptx
+2026-06-07 11:56:04 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT3_VHL.pptx
+2026-06-07 11:56:04 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN.pdf
+2026-06-07 11:56:04 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN_IDH1_Notes.docx
+2026-06-07 11:56:04 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL.pdf
+2026-06-07 11:56:04 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL_Notes.docx
+2026-06-07 11:56:04 [INFO] app - Index refreshed; 12 documents indexed
+2026-06-07 11:56:58 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\BRCA1.pdf
+2026-06-07 11:56:58 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR.pdf
+2026-06-07 11:56:58 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EGFR_BRCA1_Notes.docx
+2026-06-07 11:56:58 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\EXCEL_Oncology_Treatment_Status.xlsx
+2026-06-07 11:56:58 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\IDH.pdf
+2026-06-07 11:56:58 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT1_EGFR_BRCA1.pptx
+2026-06-07 11:56:58 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT2_PTEN_IDH1.pptx
+2026-06-07 11:56:58 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PPT3_VHL.pptx
+2026-06-07 11:56:58 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN.pdf
+2026-06-07 11:56:58 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\PTEN_IDH1_Notes.docx
+2026-06-07 11:56:58 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL.pdf
+2026-06-07 11:56:58 [INFO] src.data_plane.embeddings - Found file: src\data_plane\data\VHL_Notes.docx
+2026-06-07 11:56:58 [INFO] app - Index refreshed; 12 documents indexed
+2026-06-07 11:57:08 [INFO] app - Search query='gene' k=20

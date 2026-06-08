@@ -2,6 +2,7 @@ import sqlite3
 from typing import Dict, List, Optional
 
 from config import DB_PATH
+from src.data_plane import queries
 from src.utils.error_handler import handle_db_errors
 from src.utils.exceptions import DatabaseError, ValidationError
 from src.utils.logger import get_logger
@@ -21,19 +22,19 @@ def query_targets(filters: Dict[str, Optional[str]]) -> List[sqlite3.Row]:
     params = []
 
     if filters.get("disease_context"):
-        conditions.append("disease_context LIKE ?")
+        conditions.append(queries.FILTER_DISEASE_CONTEXT)
         params.append(f"%{filters['disease_context']}%")
     if filters.get("target_type"):
-        conditions.append("target_type = ?")
+        conditions.append(queries.FILTER_TARGET_TYPE)
         params.append(filters["target_type"])
     if filters.get("current_status"):
-        conditions.append("current_status = ?")
+        conditions.append(queries.FILTER_CURRENT_STATUS)
         params.append(filters["current_status"])
 
-    sql = "SELECT * FROM targets"
+    sql = queries.SELECT_TARGETS_BASE
     if conditions:
         sql += " WHERE " + " AND ".join(conditions)
-    sql += " ORDER BY updated_at DESC"
+    sql += queries.TARGETS_ORDER_BY_UPDATED
 
     logger.debug("Executing query: %s | params: %s", sql, params)
 
