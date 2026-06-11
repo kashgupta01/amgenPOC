@@ -1,7 +1,13 @@
 trigger: 
 - main
 
-
+#why is the vmImage ubuntu-latest? Because the Docker task and Azure CLI task used in this pipeline are compatible with Linux agents, and using ubuntu-latest ensures that we have a modern environment with the necessary tools pre-installed. Additionally, using a Linux agent can often lead to faster build times for Docker images compared to Windows agents.
+#what other vmImage options are there? Azure Pipelines offers a variety of vmImage options, including:
+#- windows-latest: A Windows Server image with the latest updates.
+#- ubuntu-latest: An Ubuntu image with the latest updates (commonly used for Docker and Linux-based tasks).
+#- macos-latest: A macOS image with the latest updates (used for building and testing macOS applications).
+#- windows-2022: A specific version of Windows Server.
+#- ubuntu-20.04: A specific version of Ubuntu.
 pool:
   vmImage: ubuntu-latest
 
@@ -70,13 +76,31 @@ stages:
   - job: DeployContainerApp
     steps:
     - task: AzureCLI@2
-      displayName: 'Update Container App image'
+      displayName: 'Create or update Container App'
       inputs:
         azureSubscription: '$(azureServiceConnection)'
         scriptType: bash
         scriptLocation: inlineScript
         inlineScript: |
-          az containerapp update \
-            --name $(containerAppName) \
-            --resource-group $(resourceGroup) \
-            --image $(acrLoginServer)/$(imageRepository):$(tag)
+          az extension add --name containerapp --upgrade --yes 2>/dev/null || true
+
+          if az containerapp show \
+               --name $(containerAppName) \
+               --resource-group $(resourceGroup) &>/dev/null; then
+            echo "Container App exists — updating image"
+            az containerapp update \
+              --name $(containerAppName) \
+              --resource-group $(resourceGroup) \
+              --image $(acrLoginServer)/$(imageRepository):latest
+          else
+            echo "Container App not found — creating"
+            az containerapp create \
+              --name $(containerAppName) \
+              --resource-group $(resourceGroup) \
+              --image $(acrLoginServer)/$(imageRepository):latest \
+              --target-port 8000 \
+              --ingress external \
+              --registry-server $(acrLoginServer) \
+              --min-replicas 0 \
+              --max-replicas 1
+          fi
