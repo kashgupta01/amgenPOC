@@ -86,6 +86,12 @@ stages:
         inlineScript: |
           az extension add --name containerapp --upgrade --yes 2>/dev/null || true
 
+          # Get ACR admin credentials (enable admin user if not already on)
+          ACR_NAME=$(echo $(acrLoginServer) | cut -d'.' -f1)
+          az acr update --name $ACR_NAME --admin-enabled true
+          ACR_USERNAME=$(az acr credential show --name $ACR_NAME --query username -o tsv)
+          ACR_PASSWORD=$(az acr credential show --name $ACR_NAME --query "passwords[0].value" -o tsv)
+
           # Create the Container Apps Environment if it doesn't exist
           if ! az containerapp env show \
                 --name $(containerAppEnv) \
@@ -104,7 +110,10 @@ stages:
             az containerapp update \
               --name $(containerAppName) \
               --resource-group $(resourceGroup) \
-              --image $(acrLoginServer)/$(imageRepository):latest
+              --image $(acrLoginServer)/$(imageRepository):latest \
+              --registry-server $(acrLoginServer) \
+              --registry-username $ACR_USERNAME \
+              --registry-password $ACR_PASSWORD
           else
             echo "Container App not found — creating"
             az containerapp create \
@@ -115,6 +124,8 @@ stages:
               --target-port 8000 \
               --ingress external \
               --registry-server $(acrLoginServer) \
+              --registry-username $ACR_USERNAME \
+              --registry-password $ACR_PASSWORD \
               --min-replicas 0 \
               --max-replicas 1
           fi
