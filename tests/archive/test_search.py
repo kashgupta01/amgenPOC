@@ -1,3 +1,6 @@
+# Archived: these tests covered the targets/evidence/decision tables which have been
+# removed from the schema. The app now uses only the documents table for embedding-based retrieval.
+
 import pytest
 from src.control_plane.search import query_targets
 
