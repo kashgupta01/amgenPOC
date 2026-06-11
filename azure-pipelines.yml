@@ -19,7 +19,9 @@ variables:
   # Fill these in to match your Azure resources
   azureServiceConnection: 'amgenPOC-azure-connection'
   containerAppName: 'amgenpoc-app'
+  containerAppEnv: 'amgenpoc-env'
   resourceGroup: 'amgenPOC'
+  location: 'westus2'
   acrLoginServer: 'amgenpocdocker-g5axeqdhapfbdsa2.azurecr.io'
 stages:
 #Runs the tests using pytest. It installs the dependencies and then runs the tests in the tests/ directory.
@@ -84,6 +86,17 @@ stages:
         inlineScript: |
           az extension add --name containerapp --upgrade --yes 2>/dev/null || true
 
+          # Create the Container Apps Environment if it doesn't exist
+          if ! az containerapp env show \
+                --name $(containerAppEnv) \
+                --resource-group $(resourceGroup) &>/dev/null; then
+            echo "Creating Container Apps Environment"
+            az containerapp env create \
+              --name $(containerAppEnv) \
+              --resource-group $(resourceGroup) \
+              --location $(location)
+          fi
+
           if az containerapp show \
                --name $(containerAppName) \
                --resource-group $(resourceGroup) &>/dev/null; then
@@ -97,6 +110,7 @@ stages:
             az containerapp create \
               --name $(containerAppName) \
               --resource-group $(resourceGroup) \
+              --environment $(containerAppEnv) \
               --image $(acrLoginServer)/$(imageRepository):latest \
               --target-port 8000 \
               --ingress external \
