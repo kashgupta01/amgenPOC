@@ -1,5 +1,5 @@
-trigger: none 
-#- main
+trigger: 
+- main
 
 
 pool:
@@ -8,10 +8,13 @@ pool:
 variables:
   imageRepository: 'amgenpoc'
   dockerfilePath: 'Dockerfile'
-  #Add date timesamp in build tag
-  #tag: '$(Build.BuildId)'
   tag: '$(Build.BuildId)'
   dockerRegistryServiceConnection: 'amgenPOC-acr-connection'
+  # Fill these in to match your Azure resources
+  azureServiceConnection: 'amgenPOC-azure-connection'
+  containerAppName: 'amgenpoc-app'
+  resourceGroup: 'amgenpoc-rg'
+  acrLoginServer: '<your-acr-name>.azurecr.io'
 stages:
 #Runs the tests using pytest. It installs the dependencies and then runs the tests in the tests/ directory.
 - stage: Test
@@ -58,3 +61,22 @@ stages:
         tags: |
           $(tag)
           latest
+
+- stage: Deploy
+  displayName: Deploy to Container App
+  dependsOn: BuildAndPush
+  condition: succeeded()
+  jobs:
+  - job: DeployContainerApp
+    steps:
+    - task: AzureCLI@2
+      displayName: 'Update Container App image'
+      inputs:
+        azureSubscription: '$(azureServiceConnection)'
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+          az containerapp update \
+            --name $(containerAppName) \
+            --resource-group $(resourceGroup) \
+            --image $(acrLoginServer)/$(imageRepository):$(tag)
