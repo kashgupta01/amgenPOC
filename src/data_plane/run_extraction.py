@@ -17,6 +17,9 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 
 from src.data_plane.data_processing import process_file
+from src.utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 DATA_DIR = pathlib.Path("src/data_plane/data")
 OUTPUT_FILE = pathlib.Path("src/data_plane/extracted_data.txt")
@@ -31,7 +34,7 @@ def main():
     files = sorted(f for f in DATA_DIR.iterdir() if f.suffix.lower() in SUPPORTED)
 
     if not files:
-        print(f"No supported files found in {DATA_DIR}")
+        logger.warning("No supported files found in %s", DATA_DIR)
         return
 
     #initialize blocks and lines
@@ -40,7 +43,7 @@ def main():
 
     #Process each file and extract blocks, formatting them with separators and metadata for clarity. Each block is separated by a line of equal signs, followed by a header containing the file name, type, and location of the extracted text within the file. The extracted text is then added below the header, with an additional blank line for readability. After processing all files, a final summary line is added to indicate the total number of blocks extracted and the number of files processed.
     for path in files:
-        print(f"Processing: {path.name}")
+        logger.info("Processing: %s", path.name)
         blocks = process_file(path)
         total_blocks += len(blocks)
 
@@ -59,7 +62,7 @@ def main():
 
     #Write all formatted blocks to the output file, ensuring that the text is encoded in UTF-8 to handle a wide range of characters. After writing the data, print a confirmation message indicating that the extraction process is complete and providing the location of the output file for easy access.
     OUTPUT_FILE.write_text("\n".join(lines), encoding="utf-8")
-    print(f"\nDone. {total_blocks} blocks from {len(files)} files -> {OUTPUT_FILE}")
+    logger.info("Done. %d blocks from %d files -> %s", total_blocks, len(files), OUTPUT_FILE)
 
 
 if __name__ == "__main__":

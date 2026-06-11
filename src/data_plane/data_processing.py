@@ -10,6 +10,10 @@ Usage:
 import pathlib
 from dataclasses import dataclass
 
+from src.utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 
 #Data model ────────────────────────────────────────────────────────────────
 #The extracted text is stored in a simple dataclass called ExtractedBlock, which includes the text content, the source file name, the type of source (pdf, docx, pptx, excel), and the location within the file (e.g., page number, slide number, sheet name and row).
@@ -40,6 +44,7 @@ def _extract_pdf(path: pathlib.Path) -> list[tuple[str, str]]:
 
     results = []
     with fitz.open(path) as doc:
+        logger.debug("PDF %s has %d page(s)", path.name, len(doc))
         for i, page in enumerate(doc, 1):
             page_h = page.rect.height
             footnote_threshold = page_h * 0.88  # bottom 12% = footnote zone
@@ -75,6 +80,7 @@ def _extract_pdf(path: pathlib.Path) -> list[tuple[str, str]]:
             combined = "\n".join(kept).strip()
             if combined:
                 results.append((combined, f"page {i}"))
+    logger.debug("PDF %s: extracted %d block(s)", path.name, len(results))
     return results
 
 
@@ -82,11 +88,12 @@ def _extract_docx(path: pathlib.Path) -> list[tuple[str, str]]:
     from docx import Document
     doc = Document(path)
     results = []
-    #iterate through each paragraph and extract text along with its location 
+    #iterate through each paragraph and extract text along with its location
     for i, para in enumerate(doc.paragraphs, 1):
         text = para.text.strip()
         if text:
             results.append((text, f"paragraph {i}"))
+    logger.debug("DOCX %s: extracted %d paragraph(s)", path.name, len(results))
     return results
 
 #why is there an underscore before the function names? The underscore before the function names (e.g., _extract_pdf) is a common convention in Python to indicate that these functions are intended for internal use within the module and are not part of the public API. It signals to other developers that these functions are meant to be private and should not be accessed directly from outside the module, helping to encapsulate the implementation details and maintain a cleaner interface.
@@ -108,6 +115,7 @@ def _extract_pptx(path: pathlib.Path) -> list[tuple[str, str]]:
         # Only add to results if there is any text extracted from the slide
         if combined:
             results.append((combined, f"slide {i}"))
+    logger.debug("PPTX %s: extracted %d slide(s) with text", path.name, len(results))
     return results
 
 #Excel files can have multiple sheets, and each sheet can have multiple rows of data. The _extract_excel function uses pandas to read the Excel file, handling both .xlsx and .csv formats. It iterates through each sheet (or the single sheet in case of CSV), and for each row that contains non-empty values, it combines the values into a single string and stores it along with the sheet name and row number as the location. This allows us to capture structured data from Excel files in a way that can be easily referenced later on.
@@ -115,12 +123,14 @@ def _extract_excel(path: pathlib.Path) -> list[tuple[str, str]]:
     import pandas as pd
     suffix = path.suffix.lower()
     frames = {"sheet 1": pd.read_csv(path)} if suffix == ".csv" else pd.read_excel(path, sheet_name=None)
+    logger.debug("Excel %s: reading %d sheet(s)", path.name, len(frames))
     results = []
     for sheet_name, df in frames.items():
         for i, row in df.dropna(how="all").iterrows():
             text = " | ".join(str(v) for v in row.values if str(v).strip())
             if text:
                 results.append((text, f"sheet '{sheet_name}' row {i + 1}"))
+    logger.debug("Excel %s: extracted %d row(s)", path.name, len(results))
     return results
 
 #Mapping of file extensions to their corresponding extractor functions. This allows the main processing function to dynamically select the appropriate extractor based on the file type, making the code more modular and easier to maintain. If a new file type needs to be supported in the future, we can simply add a new extractor function and update this mapping without having to change the core logic of the process_file function.
@@ -145,12 +155,18 @@ def process_file(path: str | pathlib.Path) -> list[ExtractedBlock]:
     #determines the extension of the file and looks up the corresponding extractor function in the _EXTRACTORS dictionary. If the file type is not supported (i.e., there is no corresponding extractor), it raises a ValueError with a message indicating the unsupported file type and listing the supported types. This ensures that the function fails gracefully when given an unsupported file, providing clear feedback to the user about what went wrong and how to fix it.
     extractor = _EXTRACTORS.get(suffix)
     if extractor is None:
+        logger.error("Unsupported file type %r for file %s", suffix, path.name)
         raise ValueError(f"Unsupported file type: {suffix!r}. Supported: {list(_EXTRACTORS)}")
-    
-    #calls the appropriate extractor function to get a list of tuples containing the extracted text and its location. It then creates and returns a list of ExtractedBlock instances, where each block contains the extracted text, the source file name, the source type (derived from the file extension), and the location within the file. This structured representation allows for easy handling of the extracted data in later stages of processing or analysis.
-    return [
+
+    logger.debug("Extracting %s", path)
+    blocks = [
         ExtractedBlock(text=text, source_file=path.name, source_type=suffix.lstrip("."), location=location)
         for text, location in extractor(path)
     ]
+    if not blocks:
+        logger.warning("No text extracted from %s", path.name)
+    else:
+        logger.debug("Extracted %d block(s) from %s", len(blocks), path.name)
+    return blocks
 
 

@@ -49,4 +49,4 @@ def query_targets(filters: Dict[str, Optional[str]]) -> List[sqlite3.Row]:
 
 def print_all_results(results):
     for row in results:
-        print(dict(row))
+        logger.info("%s", dict(row))

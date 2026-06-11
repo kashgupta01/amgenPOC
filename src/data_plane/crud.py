@@ -3,6 +3,9 @@ from typing import Optional
 
 from src.data_plane import queries
 from src.data_plane.models import DecisionEntry, EvidenceItem, TargetRecord
+from src.utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 
 def insert_target(conn: sqlite3.Connection, target: TargetRecord) -> int:
@@ -20,6 +23,7 @@ def insert_target(conn: sqlite3.Connection, target: TargetRecord) -> int:
             target.updated_at.isoformat(),
         ),
     )
+    logger.debug("Inserted target %r with id=%d", target.name, cursor.lastrowid)
     return cursor.lastrowid
 
 
@@ -30,22 +34,30 @@ def update_target(conn: sqlite3.Connection, target_id: int, fields: dict) -> Non
     }
     filtered = {k: v for k, v in fields.items() if k in allowed}
     if not filtered:
+        logger.debug("update_target called for id=%d with no valid fields — skipped", target_id)
         return
     set_clause = ", ".join(f"{k} = ?" for k in filtered)
     conn.execute(
         queries.UPDATE_TARGET_TEMPLATE.format(set_clause=set_clause),
         (*filtered.values(), target_id),
     )
+    logger.debug("Updated target id=%d fields=%s", target_id, list(filtered))
 
 
 def delete_target(conn: sqlite3.Connection, target_id: int) -> None:
     conn.execute(queries.DELETE_EVIDENCE_BY_TARGET, (target_id,))
     conn.execute(queries.DELETE_DECISIONS_BY_TARGET, (target_id,))
     conn.execute(queries.DELETE_TARGET_BY_ID, (target_id,))
+    logger.debug("Deleted target id=%d and its evidence/decisions", target_id)
 
 
 def get_target_by_id(conn: sqlite3.Connection, target_id: int) -> Optional[sqlite3.Row]:
-    return conn.execute(queries.SELECT_TARGET_BY_ID, (target_id,)).fetchone()
+    row = conn.execute(queries.SELECT_TARGET_BY_ID, (target_id,)).fetchone()
+    if row is None:
+        logger.warning("Target id=%d not found", target_id)
+    else:
+        logger.debug("Fetched target id=%d", target_id)
+    return row
 
 
 def insert_evidence_item(conn: sqlite3.Connection, target_id: int, item: EvidenceItem) -> int:
@@ -61,11 +73,14 @@ def insert_evidence_item(conn: sqlite3.Connection, target_id: int, item: Evidenc
             item.created_at.isoformat(),
         ),
     )
+    logger.debug("Inserted evidence item id=%d for target id=%d", cursor.lastrowid, target_id)
     return cursor.lastrowid
 
 
 def get_evidence_by_target(conn: sqlite3.Connection, target_id: int) -> list:
-    return conn.execute(queries.SELECT_EVIDENCE_BY_TARGET, (target_id,)).fetchall()
+    rows = conn.execute(queries.SELECT_EVIDENCE_BY_TARGET, (target_id,)).fetchall()
+    logger.debug("Fetched %d evidence item(s) for target id=%d", len(rows), target_id)
+    return rows
 
 
 def insert_decision(conn: sqlite3.Connection, target_id: int, entry: DecisionEntry) -> int:
@@ -81,8 +96,11 @@ def insert_decision(conn: sqlite3.Connection, target_id: int, entry: DecisionEnt
             entry.notes,
         ),
     )
+    logger.debug("Inserted decision id=%d for target id=%d", cursor.lastrowid, target_id)
     return cursor.lastrowid
 
 
 def get_decisions_by_target(conn: sqlite3.Connection, target_id: int) -> list:
-    return conn.execute(queries.SELECT_DECISIONS_BY_TARGET, (target_id,)).fetchall()
+    rows = conn.execute(queries.SELECT_DECISIONS_BY_TARGET, (target_id,)).fetchall()
+    logger.debug("Fetched %d decision(s) for target id=%d", len(rows), target_id)
+    return rows
