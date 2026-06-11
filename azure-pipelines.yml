@@ -23,6 +23,7 @@ variables:
   resourceGroup: 'amgenPOC'
   location: 'westus2'
   acrLoginServer: 'amgenpocdocker-g5axeqdhapfbdsa2.azurecr.io'
+  acrName: 'amgenPOCDocker'
 stages:
 #Runs the tests using pytest. It installs the dependencies and then runs the tests in the tests/ directory.
 - stage: Test
@@ -87,10 +88,9 @@ stages:
           az extension add --name containerapp --upgrade --yes 2>/dev/null || true
 
           # Get ACR admin credentials (enable admin user if not already on)
-          ACR_NAME=$(echo $(acrLoginServer) | cut -d'.' -f1)
-          az acr update --name $ACR_NAME --admin-enabled true
-          ACR_USERNAME=$(az acr credential show --name $ACR_NAME --query username -o tsv)
-          ACR_PASSWORD=$(az acr credential show --name $ACR_NAME --query "passwords[0].value" -o tsv)
+          az acr update --name $(acrName) --admin-enabled true
+          ACR_USERNAME=$(az acr credential show --name $(acrName) --query username -o tsv)
+          ACR_PASSWORD=$(az acr credential show --name $(acrName) --query "passwords[0].value" -o tsv)
 
           # Create the Container Apps Environment if it doesn't exist
           if ! az containerapp env show \
