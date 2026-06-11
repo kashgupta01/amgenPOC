@@ -13,8 +13,8 @@ variables:
   # Fill these in to match your Azure resources
   azureServiceConnection: 'amgenPOC-azure-connection'
   containerAppName: 'amgenpoc-app'
-  resourceGroup: 'amgenpoc-rg'
-  acrLoginServer: '<your-acr-name>.azurecr.io'
+  resourceGroup: 'amgenPOC'
+  acrLoginServer: 'amgenpocdocker-g5axeqdhapfbdsa2.azurecr.io'
 stages:
 #Runs the tests using pytest. It installs the dependencies and then runs the tests in the tests/ directory.
 - stage: Test
