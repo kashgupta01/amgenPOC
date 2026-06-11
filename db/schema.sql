@@ -11,3 +11,7 @@ CREATE TABLE IF NOT EXISTS documents (
     model_name   TEXT,
     indexed_at   TEXT    DEFAULT CURRENT_TIMESTAMP
 );
+
+DROP TABLE IF EXISTS decision_history;
+DROP TABLE IF EXISTS targets;
+DROP TABLE IF EXISTS evidence_items;
