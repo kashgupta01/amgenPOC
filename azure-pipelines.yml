@@ -71,6 +71,7 @@ stages:
           $(tag)
           latest
 
+#Add deploy stage - created a container app to host the application. The Azure CLI task checks if the Container App already exists; if it does, it updates the image, and if not, it creates a new Container App with the specified configuration. It also ensures that the Container Apps Environment is created if it doesn't already exist. The deployment uses the latest image from ACR and sets up the necessary registry credentials for authentication.
 - stage: Deploy
   displayName: Deploy to Container App
   dependsOn: BuildAndPush
@@ -83,8 +84,10 @@ stages:
       inputs:
         azureSubscription: '$(azureServiceConnection)'
         scriptType: bash
+        #this is what specifies the script to run in the Azure CLI task. The inlineScript option allows you to provide the script directly within the YAML file, rather than referencing an external script file. This is useful for simple scripts or when you want to keep everything contained in one place for easier readability and maintenance.
         scriptLocation: inlineScript
         inlineScript: |
+        # Install the Container Apps extension (ignore errors if already installed)
           az extension add --name containerapp --upgrade --yes 2>/dev/null || true
 
           # Get ACR admin credentials (enable admin user if not already on)
@@ -101,6 +104,7 @@ stages:
               --name $(containerAppEnv) \
               --resource-group $(resourceGroup) \
               --location $(location)
+              #why do we need to create a Container Apps Environment? A Container Apps Environment is a secure boundary around a group of container apps. It provides features like networking, scaling, and isolation for the container apps within it. By creating a Container Apps Environment, you can manage and scale your container apps more effectively, ensuring they have the necessary resources and configurations to run smoothly. Additionally, it allows you to group related container apps together, making it easier to manage and monitor them as a cohesive unit.
           fi
 
           if az containerapp show \
@@ -110,10 +114,7 @@ stages:
             az containerapp update \
               --name $(containerAppName) \
               --resource-group $(resourceGroup) \
-              --image $(acrLoginServer)/$(imageRepository):latest \
-              --registry-server $(acrLoginServer) \
-              --registry-username $ACR_USERNAME \
-              --registry-password $ACR_PASSWORD
+              --image $(acrLoginServer)/$(imageRepository):latest
           else
             echo "Container App not found — creating"
             az containerapp create \
